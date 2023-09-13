@@ -1,0 +1,181 @@
+/* перезагрузка css */
+* {
+  padding: 0px;
+  margin: 0px;
+  outline: none;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Скрытие стрелочки в input number */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+
+/* константы */
+:root {
+  --main-color: rgb(238, 235, 235);
+  --second-color: rgb(213, 209, 209);
+  --third-color: rgb(177, 174, 174);
+  --not-read-button-color: rgb(180, 23, 23);
+  --hover-not-read-button-color: rgb(133, 17, 17);
+  --read-button-color: rgb(23, 180, 54);
+  --hover-read-button-color: rgb(17, 131, 39);
+  --shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+  --second-shadow: inset rgba(0, 0, 0, 0.16) 0px 1px 4px;
+  --main-font-size: 1rem;
+}
+
+/* Настройка внешнего вида всей страницы */
+body {
+  background-color: var(--main-color);
+}
+
+/* верхняя панель */
+header {
+  height: 10vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* центральная панель */
+main {
+  height: 85vh;
+  background-color: var(--second-color);
+  box-shadow: var(--second-shadow);
+  font-family: "Ysabeau SC", sans-serif;
+}
+
+#button_field {
+  height: 10vh;
+  display: flex;
+  justify-content: center;
+  align-items: end;
+}
+
+#add {
+  border: none;
+  font-size: calc(var(--main-font-size) * 1.5);
+  background-color: var(--second-color);
+  font-weight: bold;
+  border-radius: 10px;
+  padding: 10px;
+  box-shadow: var(--shadow);
+}
+
+#add:hover {
+  background-color: var(--third-color);
+}
+
+#books_field {
+  display: grid;
+  gap: 10px;
+  margin: 10px 10px 0 10px;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  overflow: auto;
+}
+
+/* настройка модального окна */
+#bookDialog {
+  margin: auto;
+  border-radius: 10px;
+  background-color: var(--main-color);
+  display: block;
+  transform: scale(0.2);
+  transition: all 0.2s linear;
+  visibility: hidden;
+  opacity: 0;
+  position: fixed;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+}
+
+#bookDialog[open] {
+  display: block;
+  transform: scale(1);
+  visibility: visible;
+  opacity: 1;
+}
+
+#bookDialog form div {
+  display: grid;
+}
+
+#bookDialog form > div {
+  padding: 1rem;
+}
+
+#bookDialog form div input {
+  border: none;
+  border-radius: 5px;
+  padding: 0 5px;
+}
+
+#bookDialog form p button {
+  width: 100%;
+  background-color: var(--third-color);
+  border: none;
+  border-radius: 10px;
+}
+
+#read {
+  vertical-align: middle;
+}
+
+/* нижняя панель */
+footer {
+  height: 5vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: calc(var(--main-font-size) * 1.5);
+}
+
+/* стилизация карточки книги  */
+.book {
+  border: 3px solid black;
+  border-radius: 10px;
+  padding: 10px;
+  text-align: center;
+  display: grid;
+  gap: 5px;
+  grid-template-rows: 1fr 1fr 20px 30px 30px;
+  background-color: var(--main-color);
+}
+
+.btn {
+  border: none;
+  border-radius: 5px;
+}
+
+.btn_read {
+  background: var(--read-button-color);
+}
+.btn_read:hover {
+  background: var(--hover-read-button-color);
+}
+
+.btn_notRead {
+  background: var(--not-read-button-color);
+}
+
+.btn_notRead:hover {
+  background: var(--hover-not-read-button-color);
+}
+
+.btn_del {
+  background: var(--second-color);
+}
+
+.btn_del:hover {
+  background: var(--third-color);
+}

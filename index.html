@@ -5,8 +5,68 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Library</title>
     <link rel="stylesheet" href="style.css" />
+    <link rel="icon" href="img/favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Ysabeau+SC&display=swap"
+      rel="stylesheet"
+    />
+    <script src="script.js" defer></script>
   </head>
   <body>
-    <script src="script.js"></script>
+    <header><h1>Library</h1></header>
+    <main>
+      <div id="button_field">
+        <button id="add">Add book</button>
+      </div>
+      <div id="books_field">
+        <div class="book">
+          <p>The Hobbit</p>
+          <p>J.R.R. Tolkien</p>
+          <p>295</p>
+          <button class="btn btn_read">Read</button>
+          <button class="btn btn_del">Remove</button>
+        </div>
+        <div class="book">
+          <p>The Hobbit</p>
+          <p>J.R.R. Tolkien</p>
+          <p>295</p>
+          <button class="btn btn_notRead">Not read</button>
+          <button class="btn btn_del">Remove</button>
+        </div>
+
+        <!-- Диалоговое окно с формой -->
+        <dialog id="bookDialog">
+          <form method="dialog">
+            <div>
+              <div>
+                <label for="title">Book title:</label>
+                <input id="title" type="text" required />
+              </div>
+              <div>
+                <label for="author">Author:</label>
+                <input id="author" type="text" required />
+              </div>
+              <div>
+                <label for="pages">Pages:</label>
+                <input id="pages" type="number" required />
+              </div>
+              <p>
+                <label for="read">Read?</label>
+                <input id="read" type="checkbox" />
+              </p>
+              <p>
+                <button type="submit">Save</button>
+              </p>
+            </div>
+          </form>
+        </dialog>
+        <!-- Диалоговое окно с формой -->
+      </div>
+    </main>
+    <footer>
+      <p>Created in 2023</p>
+    </footer>
   </body>
 </html>
