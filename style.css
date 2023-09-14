@@ -22,47 +22,57 @@ input::-webkit-inner-spin-button {
   --main-color: rgb(238, 235, 235);
   --second-color: rgb(213, 209, 209);
   --third-color: rgb(177, 174, 174);
+  --top-bottom-panels: rgb(151, 149, 149);
   --not-read-button-color: rgb(180, 23, 23);
   --hover-not-read-button-color: rgb(133, 17, 17);
   --read-button-color: rgb(23, 180, 54);
   --hover-read-button-color: rgb(17, 131, 39);
   --shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
   --second-shadow: inset rgba(0, 0, 0, 0.16) 0px 1px 4px;
+  --header-shadow: 0px 6px 10px 0px var(--top-bottom-panels);
+  --bottom-shadow: 0px -4px 10px 0px var(--top-bottom-panels);
   --main-font-size: 1rem;
 }
 
 /* Настройка внешнего вида всей страницы */
 body {
   background-color: var(--main-color);
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
 }
 
 /* верхняя панель */
 header {
   height: 10vh;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
+  background: var(--top-bottom-panels);
+  box-shadow: var(--header-shadow);
+  z-index: 2;
+  padding: 0 5vw;
 }
 
 /* центральная панель */
 main {
-  height: 85vh;
   background-color: var(--second-color);
   box-shadow: var(--second-shadow);
   font-family: "Ysabeau SC", sans-serif;
+  flex: 1;
+  overflow-y: auto;
 }
 
 #button_field {
   height: 10vh;
   display: flex;
-  justify-content: center;
-  align-items: end;
+  align-items: center;
 }
 
 #add {
   border: none;
   font-size: calc(var(--main-font-size) * 1.5);
-  background-color: var(--second-color);
+  background-color: var(--third-color);
   font-weight: bold;
   border-radius: 10px;
   padding: 10px;
@@ -70,15 +80,15 @@ main {
 }
 
 #add:hover {
-  background-color: var(--third-color);
+  background-color: var(--second-color);
 }
 
 #books_field {
   display: grid;
   gap: 10px;
-  margin: 10px 10px 0 10px;
+  margin: 0 10px;
+  padding-top: 10px;
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  overflow: auto;
 }
 
 /* настройка модального окна */
@@ -138,6 +148,8 @@ footer {
   justify-content: center;
   align-items: center;
   font-size: calc(var(--main-font-size) * 1.5);
+  background: var(--top-bottom-panels);
+  box-shadow: var(--bottom-shadow);
 }
 
 /* стилизация карточки книги  */
