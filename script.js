@@ -36,7 +36,7 @@ function createBook(title, author, pages, read) {
   myLibrary.push(book);
 }
 
-//тестовое добавление элементов в массив. РАБОТА С МАССИВОМ ЕЩЁ НЕ РЕАЛИЗОВАНА
+//тестовое добавление элементов в массив.
 createBook("The Hobbit", "J.R.R. Tolkien", 295, false);
 createBook("The Mars", "Dmitriy Kotovar", 1095, true);
 
@@ -53,7 +53,12 @@ function addBookToField(title, author, pages, read) {
   let book = document.createElement("div");
   book.classList.add("book");
 
-  let bookData = [title, author, pages];
+  let bookData = [author, pages];
+  let p = document.createElement("p");
+  p.textContent = title;
+  p.classList.add("title_name");
+  book.append(p);
+
   for (let data of bookData) {
     let p = document.createElement("p");
     p.textContent = data;
@@ -87,25 +92,45 @@ function reset() {
   read.checked = false;
 }
 
-//удаление книги из списка
+//удаление книги из списка и массива
 bookField.addEventListener("click", function (e) {
   let element = e.target;
   if (element.classList.contains("btn_del")) {
     let container = element.parentElement;
     container.remove();
+    let bookTitle = container.querySelector(".title_name").textContent;
+    let bookIndex = myLibrary.findIndex((book) => book.title === bookTitle); //находим индекс элемента с таким же title
+    myLibrary.splice(bookIndex, 1); //удаляем элемент 1 с индекса, который мы нашли
   }
 });
 
 //смена параметра - прочитано/не прочитано
+//1 функция - меняет параметры кнопки(содержание и класс)
+function toggleRead(element, text, removeClass, addClass) {
+  element.textContent = text;
+  element.classList.remove(removeClass);
+  element.classList.add(addClass);
+}
+
+//2 функция - меняет параметры книги в массие - прочитано или нет
+function toggleReadBook(bookTitle, read) {
+  let bookIndex = myLibrary.findIndex((book) => book.title === bookTitle);
+  myLibrary[bookIndex].read = read;
+}
+
+//3 функция - слушает нажатия кнопки Прочитано/не прочитано и запускает 1 и 2 функцию
 bookField.addEventListener("click", function (e) {
   let element = e.target;
-  if (element.classList.contains("btn_read")) {
-    element.textContent = "Not read";
-    element.classList.remove("btn_read");
-    element.classList.add("btn_notRead");
-  } else if (element.classList.contains("btn_notRead")) {
-    element.textContent = "Read";
-    element.classList.remove("btn_notRead");
-    element.classList.add("btn_read");
+  let container = element.parentElement;
+  if (
+    element.classList.contains("btn_read") ||
+    element.classList.contains("btn_notRead")
+  ) {
+    let bookTitle = container.querySelector(".title_name").textContent;
+    element.classList.contains("btn_read")
+      ? (toggleRead(element, "Not read", "btn_read", "btn_notRead"),
+        toggleReadBook(bookTitle, false))
+      : (toggleRead(element, "Read", "btn_notRead", "btn_read"),
+        toggleReadBook(bookTitle, true));
   }
 });
