@@ -10,11 +10,13 @@ const read = document.getElementById("read");
 const bookField = document.getElementById("books_field");
 
 // функция конструктор для создания книг
-function Book(title, author, pages, read) {
-  this.title = title;
-  this.author = author;
-  this.pages = pages;
-  this.read = read;
+class Book {
+  constructor(title, author, pages, read) {
+    this.title = title;
+    this.author = author;
+    this.pages = pages;
+    this.read = read;
+  }
 }
 
 // Открытие диалога при нажатии на кнопку
