@@ -19,5 +19,5 @@ library uses HTML, CSS and JavaScript. It uses pure JavaScript to manipulate the
 
 ## Credits
 
-This project was inspired by [[The Odin Project](https://www.theodinproject.com/lessons/node-path-javascript-library)], which is an open source curriculum for learning web development.
+This project was inspired by [The Odin Project](https://www.theodinproject.com/lessons/node-path-javascript-library), which is an open source curriculum for learning web development.
 
